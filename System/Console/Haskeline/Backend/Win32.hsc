@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP #-}
 module System.Console.Haskeline.Backend.Win32(
                 win32Term,
                 win32TermStdin,

@@ -56,7 +56,7 @@ Library
                 StandaloneDeriving
                 MultiParamTypeClasses,
                 UndecidableInstances
-                ScopedTypeVariables, CPP, DeriveDataTypeable,
+                ScopedTypeVariables, DeriveDataTypeable,
                 PatternGuards
     Exposed-Modules:
                 System.Console.Haskeline

@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP #-}
 module System.Console.Haskeline.Backend where
 
 import System.Console.Haskeline.Term
