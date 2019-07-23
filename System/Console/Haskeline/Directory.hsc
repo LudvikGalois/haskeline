@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP #-}
 {- |
 A Unicode-aware module for interacting with files.  We just need enough to support
 filename completion.  In particular, these functions will silently handle all errors
