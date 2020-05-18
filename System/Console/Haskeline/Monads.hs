@@ -21,7 +21,6 @@ module System.Console.Haskeline.Monads(
                 orElse
                 ) where
 
-import Control.Applicative (Applicative(..))
 import Control.Monad (ap, liftM)
 import Control.Monad.IO.Class (MonadIO(..))
 import Control.Monad.Trans.Class (MonadTrans(..))
