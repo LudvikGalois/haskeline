@@ -21,7 +21,6 @@ module System.Console.Haskeline.Monads(
                 orElse
                 ) where
 
-import Control.Applicative (Applicative(..))
 import Control.Monad (ap, liftM)
 import Control.Monad.IO.Class (MonadIO(..))
 import Control.Monad.Trans.Class (MonadTrans(..))
@@ -68,7 +67,7 @@ update f = do
 runReaderT' :: r -> ReaderT r m a -> m a
 runReaderT' = flip runReaderT
 
-newtype StateT s m a = StateT { getStateTFunc 
+newtype StateT s m a = StateT { getStateTFunc
                                     :: forall r . s -> m ((a -> s -> r) -> r)}
 
 instance Monad m => Functor (StateT s m) where

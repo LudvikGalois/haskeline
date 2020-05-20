@@ -7,10 +7,9 @@ import System.Console.Haskeline.LineState
 import System.Console.Haskeline.Monads as Monads
 
 import System.IO
-import Control.Applicative(Applicative)
 import Control.Monad(liftM)
 
--- TODO: 
+-- TODO:
 ---- Put "<" and ">" at end of term if scrolls off.
 ---- Have a margin at the ends
 
@@ -34,17 +33,17 @@ evalDumb = EvalTerm (evalStateT' initWindow . unDumbTerm) (DumbTerm . lift)
 
 runDumbTerm :: Handles -> MaybeT IO RunTerm
 runDumbTerm h = liftIO $ posixRunTerm h (posixLayouts h) [] id evalDumb
-                                
+
 instance (MonadException m, MonadReader Layout m) => Term (DumbTerm m) where
     reposition _ s = refitLine s
     drawLineDiff = drawLineDiff'
-    
+
     printLines = mapM_ (printText . (++ crlf))
     moveToNextLine _ = printText crlf
     clearLayout = clearLayoutD
     ringBell True = printText "\a"
     ringBell False = return ()
-      
+
 printText :: MonadIO m => String -> DumbTerm m ()
 printText str = do
     h <- liftM ehOut ask
@@ -109,7 +108,7 @@ refitLine (xs,ys) = do
                         (_,[],l) -> (zs,l)
                         (_,zs',_) -> dropFrames w zs'
 
-    
+
 clearDeadText :: Int -> String
 clearDeadText n | n > 0 = spaces n ++ backs n
                 | otherwise = ""
