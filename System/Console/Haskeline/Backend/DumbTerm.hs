@@ -36,7 +36,7 @@ runDumbTerm h = liftIO $ posixRunTerm h (posixLayouts h) [] id evalDumb
 
 instance (MonadException m, MonadReader Layout m) => Term (DumbTerm m) where
     reposition _ s = refitLine s
-    drawLineDiff = drawLineDiff'
+    drawLineDiff = (\x y -> drawLineDiff' x y)
 
     printLines = mapM_ (printText . (++ crlf))
     moveToNextLine _ = printText crlf
